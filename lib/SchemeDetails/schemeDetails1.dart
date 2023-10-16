@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:yuvasathi/Resource/Colors/app_colors.dart';
 import '../Utilles/accordion.dart';
 import '../Utilles/allAPI.dart';
@@ -434,12 +435,19 @@ class _schemeDetails1State extends State<schemeDetails1> {
                 ElevatedButton(
                   child: Text('applyscheme'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.white)),
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xff64C44D)),),
-                  onPressed: (){
+                  onPressed: () async {
                     ratingAPI(userRating);
                     Navigator.pop(context);
                     var url=widget.sources_url;
-                    print('ooooo-----$url');
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => webview(url)));
+                    var urllaunchable = await canLaunch(url); //canLaunch is from url_launcher package
+                    if(urllaunchable){
+                      await launch(url);
+                      setState(() {});
+                    }else{
+                      print("URL can't be launched.");
+                    }
+                    //print('ooooo-----$url');
+                    //Navigator.push(context, MaterialPageRoute(builder: (context) => webview(url)));
                   },
                 ),
               ],
@@ -474,7 +482,7 @@ class _schemeDetails1State extends State<schemeDetails1> {
     if (response.statusCode == 200) {
       print(await 'aaaaaaaaa-----${results}');
       if(results['code']==200){
-        toasts().greenToast(results['msg']);
+        toasts().greenToastShort(results['msg']);
       }else{
         if(results['code']==500){
           toasts().redToast(results['msg']);

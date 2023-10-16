@@ -30,6 +30,18 @@ class toasts{
     );
   }
 
+  void greenToastShort(String printvalue){
+    Fluttertoast.showToast(
+        msg: printvalue,
+        backgroundColor: Colors.green,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 3,
+        textColor: Colors.white,
+        fontSize: 14.0
+    );
+  }
+
 
   void greyToast(String printvalue){
     Fluttertoast.showToast(

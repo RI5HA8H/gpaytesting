@@ -57,7 +57,7 @@ class _adminHomePageState extends State<adminHomePage> {
       child: Scaffold(
         appBar: AppBar(
           shadowColor: Colors.transparent,
-          backgroundColor:appcolors.adminPrimaryColor,
+          backgroundColor:appcolors.primaryColor,
           leadingWidth: 20.0,
           iconTheme: IconThemeData(color:appcolors.whiteColor),
           title: Image.asset('assets/icons/yuvasathi_purewhite.png',width: 120,height: 40,fit:BoxFit.fill),
@@ -100,37 +100,37 @@ class _adminHomePageState extends State<adminHomePage> {
                           ),
                           children: [
                             InkWell(
-                                child: adminModule(title: 'Total Registerd Youth', path: 'assets/icons/youth.png',count: '$totalYouth',),
+                                child: adminModule(title: 'Total Registerd Youth', path: 'assets/icons/ay1.png',count: '$totalYouth',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Non Verified Youth', path: 'assets/icons/youth.png',count: '$nonVerifyUser',),
+                                child: adminModule(title: 'Total Non Verified Youth', path: 'assets/icons/ay2.png',count: '$nonVerifyUser',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Verified Youth', path: 'assets/icons/youth.png',count: '$verifyUser',),
+                                child: adminModule(title: 'Total Verified Youth', path: 'assets/icons/ay3.png',count: '$verifyUser',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Student Registered', path: 'assets/icons/youth.png',count: '$totalStudentYouth',),
+                                child: adminModule(title: 'Total Student Registered', path: 'assets/icons/ay4.png',count: '$totalStudentYouth',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Complete Profile Youth', path: 'assets/icons/youth.png',count: '$complete_profile',),
+                                child: adminModule(title: 'Total Complete Profile Youth', path: 'assets/icons/ay5.png',count: '$complete_profile',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Entrepreneurs', path: 'assets/icons/youth.png',count: '$totalEntrepreneursYouth',),
+                                child: adminModule(title: 'Total Entrepreneurs', path: 'assets/icons/ay6.png',count: '$totalEntrepreneursYouth',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminYouthList()));
                               },
@@ -175,37 +175,37 @@ class _adminHomePageState extends State<adminHomePage> {
                           ),
                           children: [
                             InkWell(
-                                child: adminModule(title: 'Total Schemes Listed', path: 'assets/icons/adminSchemeIcon.png',count: '$totalSchemes',),
+                                child: adminModule(title: 'Total Schemes Listed', path: 'assets/icons/as1.png',count: '$totalSchemes',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total State level Schemes', path: 'assets/icons/adminSchemeIcon.png',count: '$totalStateSchemes',),
+                                child: adminModule(title: 'Total State level Schemes', path: 'assets/icons/as2.png',count: '$totalStateSchemes',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Central Gov Schemes', path: 'assets/icons/adminSchemeIcon.png',count: '$totalCentralSchemes',),
+                                child: adminModule(title: 'Total Central Gov Schemes', path: 'assets/icons/as3.png',count: '$totalCentralSchemes',),
                                 onTap: (){
                                   //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                                 },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Cen. Sponsored Schemes', path: 'assets/icons/adminSchemeIcon.png',count: '$totalCentrallySchemes',),
+                                child: adminModule(title: 'Total Cen. Sponsored Schemes', path: 'assets/icons/as4.png',count: '$totalCentrallySchemes',),
                                onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Startup Reg. Schemes', path: 'assets/icons/adminSchemeIcon.png',count: '$totalStartUp',),
+                                child: adminModule(title: 'Total Startup Reg. Schemes', path: 'assets/icons/as5.png',count: '$totalStartUp',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Schemes for Students', path: 'assets/icons/adminSchemeIcon.png',count: '$totalSchemesStudent',),
+                                child: adminModule(title: 'Total Schemes for Students', path: 'assets/icons/as6.png',count: '$totalSchemesStudent',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminSchemeList()));
                               },
@@ -247,13 +247,13 @@ class _adminHomePageState extends State<adminHomePage> {
                           ),
                           children: [
                             InkWell(
-                                child: adminModule(title: 'Total Requests for Topic', path: 'assets/icons/request.png',count: '$totalRequests',),
+                                child: adminModule(title: 'Total Requests for Topic', path: 'assets/icons/af1.png',count: '$totalRequests',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminRequestList()));
                               },
                             ),
                             InkWell(
-                                child: adminModule(title: 'Total Enquiries', path: 'assets/icons/enquiry.png',count: '$totalEnquiries',),
+                                child: adminModule(title: 'Total Enquiries', path: 'assets/icons/af2.png',count: '$totalEnquiries',),
                                 onTap: (){
                                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => adminEnquiriesList()));
                               },

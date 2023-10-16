@@ -65,6 +65,7 @@ dependencies:
   art_sweetalert: ^0.0.5
   flutter_rating_bar:
   simple_dropdown: ^0.0.3
+  webview_flutter:
 
 dev_dependencies:
   flutter_test:
