@@ -304,11 +304,11 @@ class _editProfileState extends State<editProfile> {
                 onChanged: (newVal8) {
                   setState(() {
                     areadropdownvalue = newVal8;
+                    debugPrint('$areadropdownvalue');
                   });
                 },
                 value: areadropdownvalue,
               ),
-
             ],
           ),
         ),

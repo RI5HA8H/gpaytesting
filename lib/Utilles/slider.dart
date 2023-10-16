@@ -17,9 +17,10 @@ class _sliderState extends State<slider> {
 
   int currentIndex = 0;
   List imageList = [
-    {"id": 1, "image_path": 'assets/images/schemDetaileStaticBanner.jpg'},
-    {"id": 2, "image_path": 'assets/images/schemDetaileStaticBanner.jpg'},
-    {"id": 2, "image_path": 'assets/images/schemDetaileStaticBanner.jpg'},
+    {"id": 1, "image_path": 'assets/images/sbanner1.png'},
+    {"id": 2, "image_path": 'assets/images/sbanner2.png'},
+    {"id": 2, "image_path": 'assets/images/sbanner3.png'},
+    {"id": 2, "image_path": 'assets/images/sbanner4.png'},
   ];
 
   final CarouselController carouselController = CarouselController();

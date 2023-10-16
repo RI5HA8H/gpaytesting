@@ -44,6 +44,7 @@ class _adminHomePageState extends State<adminHomePage> {
   @override
   void initState() {
     getAllCategory();
+    print('Hello');
     super.initState();
   }
 
