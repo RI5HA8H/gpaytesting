@@ -32,7 +32,7 @@ class _primaryActionsState extends State<primaryActions> {
 
   File? galleryFile;
   bool uScroll=false;
-  String userImg='';
+  String? userImg='';
 
   @override
   void initState() {
@@ -45,12 +45,14 @@ class _primaryActionsState extends State<primaryActions> {
     userId =prefs.getInt('userID');
     userName = prefs.getString('userName')!;
     userPhone = prefs.getString('userPhone')!;
-    userImg = prefs.getString('userImg')!;
+    userImg = prefs.getString('userImg');
+    print('iiigg-----$userImg');
     if(userId!=0 && userId!=null){
-      getUserData();
+      setState(() {
+        getUserData();
+      });
     }
     //galleryFile = await getFileFromSharedPreferences();
-    setState(() {});
 
   }
 
@@ -124,7 +126,7 @@ class _primaryActionsState extends State<primaryActions> {
                 backgroundColor: Colors.grey,
                 child:  userImg == null || userImg==''
                     ?  Center(child:ClipRect(child: Image.network('https://cdn-icons-png.flaticon.com/512/219/219983.png',)))
-                    : ClipOval(child: Image.network('${urls().base_url + userImg}',fit: BoxFit.cover,height: 100,width: 100,),),
+                    : ClipOval(child: Image.network('${urls().base_url + userImg!}',fit: BoxFit.cover,height: 100,width: 100,),),
               ),
             ),
             SizedBox(width: 5,),
@@ -210,7 +212,7 @@ class _primaryActionsState extends State<primaryActions> {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           userName = getitems['name'] != null ? getitems['name'] : userName;
           userImg = getitems['profile_pic'] != null ? getitems['profile_pic'] : userImg;
-
+          print('iiii-----$userImg');
           prefs.setInt('userID', getitems['id']);
           prefs.setString('userName', getitems['name']);
           prefs.setString('userPhone',getitems['mobile']);

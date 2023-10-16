@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -377,6 +378,7 @@ class _userProfileState extends State<userProfile> {
     XFile? xfilePick = pickedFile;
     if (xfilePick != null) {
       galleryFile = File(pickedFile!.path);
+
       await uploadPicToAPI(galleryFile!);
       //await saveFileToSharedPreferences(galleryFile!);
 
@@ -458,7 +460,6 @@ class _userProfileState extends State<userProfile> {
     var request = http.Request('GET', Uri.parse(urls().base_url + allAPI().youthProfileURL+'?youth_id='+encodedId));
 
     var response = await request.send();
-
     var results = jsonDecode(await response.stream.bytesToString());
 
     if (response.statusCode == 200) {

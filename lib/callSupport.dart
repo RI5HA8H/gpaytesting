@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:yuvasathi/Resource/Colors/app_colors.dart';
 import 'package:http/http.dart' as http;
@@ -39,6 +40,22 @@ class _callSupportState extends State<callSupport> {
   FocusNode emailFocusNode = FocusNode();
   FocusNode subFocusNode = FocusNode();
   FocusNode msgFocusNode = FocusNode();
+  bool engLanguage = true;
+  int userId = 0;
+
+  @override
+  void initState() {
+    getSharedValue();
+    super.initState();
+  }
+
+  Future getSharedValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      engLanguage = prefs.getBool('engLanguage')!;
+      userId =prefs.getInt('userID')!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +72,7 @@ class _callSupportState extends State<callSupport> {
           backgroundColor: appcolors.primaryColor,
           iconTheme: IconThemeData(color:appcolors.whiteColor),
           title: Image.asset('assets/icons/yuvalogo.png',width: 150,height: 50,fit:BoxFit.fill,color: Colors.white,),
-          actions: [primaryActions()],
+          actions: [primaryActions(),],
         ),
         body: scroll
             ? Center(child: CircularProgressIndicator())

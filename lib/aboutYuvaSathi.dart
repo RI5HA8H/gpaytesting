@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yuvasathi/ADMIN/adminHomePage.dart';
 import 'package:yuvasathi/ADMIN/adminLogin.dart';
 import 'package:yuvasathi/Resource/Colors/app_colors.dart';
@@ -19,6 +20,25 @@ class aboutYuvaSathi extends StatefulWidget {
 }
 
 class _aboutYuvaSathiState extends State<aboutYuvaSathi> {
+
+  bool engLanguage = true;
+  int userId = 0;
+
+  @override
+  void initState() {
+    getSharedValue();
+    super.initState();
+  }
+
+  Future getSharedValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      engLanguage = prefs.getBool('engLanguage')!;
+      userId =prefs.getInt('userID')!;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
