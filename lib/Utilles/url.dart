@@ -3,10 +3,10 @@
 
 class urls{
 
-  //Original URL
-  //String base_url = 'https://www.yuvasathi.in/';
-
   //Devlopment URL
-  String base_url = 'https://www.yuvasathi.digitalnawab.com/';
+  //String base_url = 'https://www.yuvasathi.digitalnawab.com/';
+
+  //Live URL
+  String base_url = 'https://www.yuvasathi.in/';
 
 }
