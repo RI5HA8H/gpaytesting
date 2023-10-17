@@ -162,7 +162,6 @@ class _previousHomePageState extends State<previousHomePage> {
                       child: complexModuleView(title: 'appbarItem2'.tr, path: 'assets/icons/abicon2.png',),
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => homePage()));
-
                       },
                     ),
                     InkWell(
@@ -181,7 +180,6 @@ class _previousHomePageState extends State<previousHomePage> {
                       child: complexModuleView(title: 'appbarItem4'.tr, path: 'assets/icons/abicon4.png',),
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => aboutPRD()));
-
                       },
                     ),
                     InkWell(
@@ -200,14 +198,12 @@ class _previousHomePageState extends State<previousHomePage> {
                       child: complexModuleView(title: 'appbarItem7'.tr, path: 'assets/icons/abicon7.png',),
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PressRelease()));
-
                       },
                     ),
                     InkWell(
                       child: complexModuleView(title:'appbarItem8'.tr, path: 'assets/icons/abicon8.png',),
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => photoGallery()));
-
                       },
                     ),
 
