@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
       locale: Locale('hi', 'IN'),
       translations: languages(),
       fallbackLocale: Locale('en', 'US'),
-
       theme: ThemeData(
         fontFamily: 'Poppins',
         primarySwatch:mainAppColor,

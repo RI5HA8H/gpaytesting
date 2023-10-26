@@ -64,15 +64,7 @@ class _findSchemeStepFiveState extends State<findSchemeStepFive> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         leadingWidth: 10,
-        title: IntrinsicHeight(
-          child: Row(
-            children: [
-              Image.asset('assets/icons/yuvalogo.png',width: 120,height: 50,fit:BoxFit.fill),
-              VerticalDivider(color: Colors.grey,thickness: 1),
-              Image.asset('assets/icons/dept_name_hindi.png',width: 120,height: 40,fit:BoxFit.fill),
-            ],
-          ),
-        ),
+        title: Image.asset(engLanguage ? 'assets/images/stepsearch-appbar-english-logo.png' : 'assets/images/stepsearch-appbar-logo-hindi.png',fit:BoxFit.fill),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color:appcolors.blackColor),
       ),
@@ -140,15 +132,6 @@ class _findSchemeStepFiveState extends State<findSchemeStepFive> {
                       onSelected: (val, i, selected) {
                         selectedValue=i+1;
                         print('ssssssss$val');
-                        if(i==allcastNameDropdownList.length-1){
-                          setState(() {
-                            otherscroll=true;
-                          });
-                        }else{
-                          setState(() {
-                            otherscroll=false;
-                          });
-                        }
                       },
                       buttons: allcastNameDropdownList,
                       options: GroupButtonOptions(
@@ -175,11 +158,6 @@ class _findSchemeStepFiveState extends State<findSchemeStepFive> {
 
                     ),
                   ),
-                  otherscroll ?
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, 10,20, 30),
-                    child: editTextSimple(controllers: othercastController,focusNode: otherFocusNode, hint: 'castEditText'.tr, keyboardTypes: TextInputType.name, maxlength: 50,),
-                  ) : Padding(padding: const EdgeInsets.fromLTRB(20, 10,20, 10),),
 
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 20,20, 10),
@@ -189,22 +167,12 @@ class _findSchemeStepFiveState extends State<findSchemeStepFive> {
                         backgroundColor: MaterialStateProperty.all(Color(0xff7959AC)),
                       ),
                       onPressed: (){
-                        if(selectedValue!='other'.tr){
-                          if(selectedValue==null){
-                            toasts().redToast('warningtoast'.tr);
-                          }else{
-                            toasts().greenToast('rightsteptoast'.tr);
-                            otherFocusNode.unfocus();
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => findSchemeStepSix(widget.ageValue,widget.genderValue,widget.skillValue,widget.districtValue,widget.residenceValue,selectedValue)));
-                          }
+                        if(selectedValue==null){
+                          toasts().redToast('warningtoast'.tr);
                         }else{
-                          if(othercastController.text.isEmpty){
-                            toasts().redToast('warningtoast'.tr);
-                          }else{
-                            toasts().greenToast('rightsteptoast'.tr);
-                            otherFocusNode.unfocus();
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => findSchemeStepSix(widget.ageValue,widget.genderValue,widget.skillValue,widget.districtValue,widget.residenceValue,selectedValue)));
-                          }
+                          toasts().greenToast('rightsteptoast'.tr);
+                          otherFocusNode.unfocus();
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => findSchemeStepSix(widget.ageValue,widget.genderValue,widget.skillValue,widget.districtValue,widget.residenceValue,selectedValue)));
                         }
                       },
                     ),
@@ -261,6 +229,6 @@ class _findSchemeStepFiveState extends State<findSchemeStepFive> {
       allcastNameDropdownList.insert(0,engLanguage ? clist[i]['caste_title_eng'] : clist[i]['caste_title_hindi']);
     }
     allcastNameDropdownList = allcastNameDropdownList.reversed.toList();
-    allcastNameDropdownList.insert(clist.length,"other".tr);
+    //allcastNameDropdownList.insert(clist.length,"other".tr);
   }
 }

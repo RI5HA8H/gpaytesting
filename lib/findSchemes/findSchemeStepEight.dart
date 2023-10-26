@@ -66,15 +66,7 @@ class _findSchemeStepEightState extends State<findSchemeStepEight> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         leadingWidth: 10,
-        title: IntrinsicHeight(
-          child: Row(
-            children: [
-              Image.asset('assets/icons/yuvalogo.png',width: 120,height: 50,fit:BoxFit.fill),
-              VerticalDivider(color: Colors.grey,thickness: 1),
-              Image.asset('assets/icons/dept_name_hindi.png',width: 120,height: 40,fit:BoxFit.fill),
-            ],
-          ),
-        ),
+        title: Image.asset(engLanguage ? 'assets/images/stepsearch-appbar-english-logo.png' : 'assets/images/stepsearch-appbar-logo-hindi.png',fit:BoxFit.fill),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color:appcolors.blackColor),
       ),
@@ -274,7 +266,7 @@ class _findSchemeStepEightState extends State<findSchemeStepEight> {
     var request = http.MultipartRequest('POST', Uri.parse(urls().base_url + allAPI().updateProfileURL));
     request.fields.addAll({
       'youth_id': intToBase64(userId),
-      //'gender':widget.genderValue==1 ? 'M' : widget.genderValue==2 ? 'F' : 'T',
+      'gender':'${widget.genderValue}',
       'district':'${widget.districtValue}',
       'location_type':'${widget.residenceValue}',
       'caste': '${widget.castValue}',
@@ -288,7 +280,7 @@ class _findSchemeStepEightState extends State<findSchemeStepEight> {
     var results = jsonDecode(await response.stream.bytesToString());
 
     if(response.statusCode == 200) {
-      //print(await 'aaaaaaaaa-----${results}');
+      print(await 'aaaaaaaaa-----${results}');
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => schemList(catid,sponid,depid,ageid,ratid,castid,modeid,engTitle,hinTitle,serviceURL,serviceImg,schemeCount)), (Route<dynamic> route) => false);
       if(results['code']==200){
         //toasts().greenToast('Profile Update Successfully');

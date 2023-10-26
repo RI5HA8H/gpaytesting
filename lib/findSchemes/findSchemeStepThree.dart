@@ -57,15 +57,7 @@ class _findSchemeStepThreeState extends State<findSchemeStepThree> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         leadingWidth: 10,
-        title: IntrinsicHeight(
-          child: Row(
-            children: [
-              Image.asset('assets/icons/yuvalogo.png',width: 120,height: 50,fit:BoxFit.fill),
-              VerticalDivider(color: Colors.grey,thickness: 1),
-              Image.asset('assets/icons/dept_name_hindi.png',width: 120,height: 40,fit:BoxFit.fill),
-            ],
-          ),
-        ),
+        title: Image.asset(engLanguage ? 'assets/images/stepsearch-appbar-english-logo.png' : 'assets/images/stepsearch-appbar-logo-hindi.png',fit:BoxFit.fill),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color:appcolors.blackColor),
       ),

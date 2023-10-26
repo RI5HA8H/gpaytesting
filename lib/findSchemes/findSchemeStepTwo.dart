@@ -3,6 +3,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yuvasathi/Resource/Colors/app_colors.dart';
 import '../Utilles/footer.dart';
 import '../Utilles/helplineCardView.dart';
@@ -23,11 +24,24 @@ class findSchemeStepTwo extends StatefulWidget {
 
 class _findSchemeStepTwoState extends State<findSchemeStepTwo> {
 
+  bool engLanguage = true;
   bool scroll = false;
   var selectedValue ;
   var agedropdownvalue;
   var ageitems = [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,38,40,41,42,43,44,45];
 
+  @override
+  void initState() {
+    getSharedValue();
+    super.initState();
+  }
+
+  Future getSharedValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      engLanguage = prefs.getBool('engLanguage')!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +54,7 @@ class _findSchemeStepTwoState extends State<findSchemeStepTwo> {
         appBar: AppBar(
           automaticallyImplyLeading: true,
           leadingWidth: 10,
-          title: IntrinsicHeight(
-            child: Row(
-              children: [
-                Image.asset('assets/icons/yuvalogo.png',width: 120,height: 50,fit:BoxFit.fill),
-                VerticalDivider(color: Colors.grey,thickness: 1),
-                Image.asset('assets/icons/dept_name_hindi.png',width: 120,height: 40,fit:BoxFit.fill),
-              ],
-            ),
-          ),
+          title: Image.asset(engLanguage ? 'assets/images/stepsearch-appbar-english-logo.png' : 'assets/images/stepsearch-appbar-logo-hindi.png',fit:BoxFit.fill),
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color:appcolors.blackColor),
         ),

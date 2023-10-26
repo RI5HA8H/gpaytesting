@@ -17,6 +17,7 @@ import 'package:yuvasathi/Utilles/primaryActions.dart';
 import 'package:yuvasathi/Utilles/toasts.dart';
 import 'package:yuvasathi/loginPage.dart';
 import 'package:yuvasathi/previousHomePage.dart';
+import 'package:yuvasathi/userProfileEdit.dart';
 
 import 'Utilles/action.dart';
 import 'Utilles/allAPI.dart';
@@ -187,37 +188,69 @@ class _userProfileState extends State<userProfile> {
 
                             Container(
                               padding: EdgeInsets.only(left: 10,right: 10),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    ElevatedButton(
-                                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.green),),
-                                      child: SizedBox(width: engLanguage ? 60 : 80,height: 40,child: Center(child: Text('editprofile'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 8,color: Colors.white)))),
-                                      onPressed: _editProfile
-                                    ),
-                                    SizedBox(width: 5,),
-                                    ElevatedButton(
-                                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey),),
-                                        child: SizedBox(width: engLanguage ? 80 : 60,height: 40,child: Center(child: Text('changePassword'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 8,color: Colors.white)))),
-                                        onPressed: _editPassword
-                                    ),
-                                    SizedBox(width: 5,),
-                                    ElevatedButton(
-                                      child: SizedBox(width: 50,height: 40,child: Center(child: Text('logout'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 8,color: Colors.white)))),
-                                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange),),
-                                      onPressed: () async {
-                                        _showLogoutDialog(context);
-                                        },
-                                    ),
-                                  ],
-                                ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 10,right: 10),
+                                          width: MediaQuery.of(context).size.width/2.5,
+                                          height: 40,
+                                          color: Colors.green,
+                                            child: Center(
+                                                child: Text('editprofile'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                                            ),
+                                        ),
+                                      ),
+                                    //onTap:  _editProfile
+                                    onTap: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => userProfileEdit(userName,userPhone,userEmail,dob,genderId,casteId,serviceId,empstatusId,lastqualificationId,stateId,districtId,typrofareaId)));
+                                    },
+                                  ),
+                                  SizedBox(width: 5,),
+                                  InkWell(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 10,right: 10),
+                                            width: MediaQuery.of(context).size.width/2.5,
+                                            height: 40,
+                                            color: Colors.orange,
+                                            child: Center(
+                                                child: Text('changePassword'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                                            ),
+                                        ),
+                                      ),
+                                      onTap: _editPassword
+                                  ),
+                                ],
                               ),
                             ),
                             SizedBox(height: 10,),
-                            //Text('App Version : $_version',style: TextStyle(fontSize: 12,color: Colors.grey,)),
+                            Container(
+                              padding: EdgeInsets.only(left: 10,right: 10),
+                              child: InkWell(
+                                child: Container(
+                                   height: 40,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                        color: appcolors.primaryColor,
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: Center(child: Text('logout'.tr,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: appcolors.primaryColor)))),
+                                onTap: () async {
+                                  _showLogoutDialog(context);
+                                },
+                              ),
+                            ),
+                            SizedBox(height: 15,),
+                            Text('App Version : $_version',style: TextStyle(fontSize: 12,color: Colors.grey,)),
                             SizedBox(height: 20,)
                           ],
                         ),
@@ -427,7 +460,7 @@ class _userProfileState extends State<userProfile> {
     }
   }
 
-  Future<void> saveFileToSharedPreferences(File file) async {
+/*  Future<void> saveFileToSharedPreferences(File file) async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final String encodedFile = base64Encode(await file.readAsBytes());
@@ -452,7 +485,7 @@ class _userProfileState extends State<userProfile> {
       print('Error retrieving file from SharedPreferences: $e');
     }
     return null;
-  }
+  }*/
 
   Future<void> getUserData() async {
     setState(() {uScroll = true;});
@@ -482,19 +515,26 @@ class _userProfileState extends State<userProfile> {
           lastqualification = getitems['education_title_eng'] != null ? engLanguage ? getitems['education_title_eng'] : getitems['education_title_hindi'] : lastqualification;
           userImg = getitems['profile_pic'] != null ? getitems['profile_pic'] : userImg;
 
-          genderId= getitems['gender']=='M' ? '0' : getitems['gender']=='F' ? '1' : getitems['gender']=='T' ? '2' : '';
+         /* genderId= '1';//getitems['gender'];
           casteId='1';//'${getitems['caste']}';
-          typrofareaId= '1';//'${getitems['location_type']}';
-          stateId=  '1';//'${getitems['state']}';
-          districtId= '1';// '${getitems['district']}';
-          serviceId= '1';// '${getitems['services']}';
+          typrofareaId='1';//'${getitems['location_type']}';
+          stateId= '1';//'${getitems['state']}';
+          districtId= '3';//'${getitems['district']}';
+          serviceId='1';//'${getitems['services']}';
           empstatusId= '1';//'${getitems['employment_status']}';
-          lastqualificationId= '1';//'${getitems['last_qualification']}';
+          lastqualificationId='2';//'${getitems['last_qualification']}';*/
 
-
+          genderId= getitems['gender']=='M' ? '1' : getitems['gender']=='F' ? '2' : '3';
+          casteId=getitems['caste']==null ? '1' : '${getitems['caste']}';
+          typrofareaId=getitems['location_type']==null ? '1' : '${getitems['location_type']}';
+          stateId= getitems['state']==null ? '1' : '${getitems['state']}';
+          districtId= getitems['district']==null ? '3' : '${getitems['district']}';
+          serviceId=getitems['services']==null ? '1' : '${getitems['services']}';
+          empstatusId= getitems['employment_status']==null ? '1' : '${getitems['employment_status']}';
+          lastqualificationId=getitems['last_qualification']==null ? '2' : '${getitems['last_qualification']}';
+          print('llllll-----${genderId}');
           uScroll = false;
         });
-        //something
       } else {
         toasts().redToast('Please Try Again');
         setState(() {
