@@ -17,7 +17,9 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.blueGrey,
         title: Text('Test Firebase',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold, ),),
       ),
+
       drawer: Drawer(),
+
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
